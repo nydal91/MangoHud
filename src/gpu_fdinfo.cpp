@@ -208,7 +208,7 @@ std::string GPU_fdinfo::find_hwmon_dir() {
 }
 
 std::string GPU_fdinfo::find_msm_hwmon_dir() {
-    std::string d = "/sys/class/hwmon/";
+    std::string d = "/sys/class/kgsl/kgsl-3d0/";
 
     if (!fs::exists(d))
         return "";
