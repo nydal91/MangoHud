@@ -506,7 +506,7 @@ bool CPUStats::GetCpuFile() {
         return true;
 
     std::string name, path, input;
-    std::string hwmon = "/sys/class/hwmon/";
+    std::string hwmon = "/sys/class/thermal/";
 
     auto dirs = ls(hwmon.c_str());
     for (auto& dir : dirs) {
@@ -514,7 +514,7 @@ bool CPUStats::GetCpuFile() {
         name = read_line(path + "/name");
         SPDLOG_DEBUG("hwmon: sensor name: {}", name);
 
-        if (name == "coretemp") {
+        if (name == "thermal_zone35") {
             find_input(path, "temp", input, "Package id 0");
             break;
         }
